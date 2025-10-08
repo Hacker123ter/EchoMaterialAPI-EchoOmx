@@ -30,7 +30,7 @@ EchoMaterialAPI — Лёгкая и удобная Java-библиотека д�
 <dependencies>
     <dependency>
         <groupId>com.github.Hacker123ter</groupId>
-        <artifactId>EchoMaterialAPI</artifactId>
+        <artifactId>EchoMaterialAPI-EchoOmx</artifactId>
         <version>v1.0.0</version>
     </dependency>
 </dependencies>
@@ -45,7 +45,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.github.Hacker123ter:EchoMaterialLib:v1.0.0'
+    implementation 'com.github.Hacker123ter:EchoMaterialAPI-EchoOmx:v1.0.0'
 }
 ```
 
