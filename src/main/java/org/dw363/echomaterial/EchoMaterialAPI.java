@@ -1,7 +1,6 @@
 package org.dw363.echomaterial;
 
 import org.bukkit.plugin.java.JavaPlugin;
-import org.dw363.echomaterial.item.EchoItems;
 
 public class EchoMaterialAPI extends JavaPlugin {
 
@@ -10,7 +9,10 @@ public class EchoMaterialAPI extends JavaPlugin {
     @Override
     public void onEnable() {
         instance = this;
-        EchoItems.class.getDeclaredFields();
+        try {
+            Class.forName("org.dw363.echomaterial.list.EchoList");
+            Class.forName("org.dw363.echomaterial.item.EchoMaterial");
+        } catch (ClassNotFoundException ignored) {}
     }
 
     public static EchoMaterialAPI getInstance() {

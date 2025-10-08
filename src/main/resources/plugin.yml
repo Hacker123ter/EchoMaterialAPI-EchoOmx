@@ -1,5 +1,5 @@
 name: EchoMaterialAPI
-version: '1.0.0'
+version: '1.0.1'
 main: org.dw363.echomaterial.EchoMaterialAPI
 api-version: '1.21'
 load: STARTUP
