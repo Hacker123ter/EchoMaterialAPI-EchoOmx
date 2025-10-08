@@ -1,4 +1,4 @@
-![Version](https://img.shields.io/badge/release-1.0.0-green.svg)  
+![Version](https://img.shields.io/badge/release-1.0.1-green.svg)  
 ![JDK](https://img.shields.io/badge/JDK-21.0.8-blue.svg)
 ![API](https://img.shields.io/badge/Paper-1.21-blue.svg)
 
@@ -6,9 +6,10 @@
 
 ## ✨ Описание:
 
-EchoMaterialAPI — Лёгкая и удобная Java-библиотека для создания и регистрации кастомных предметов Minecraft (1.21) с поддержкой JDK 21 и Paper.  
-- Позволяет работать с кастомными предметами так же, как с обычными `Material`, используя `EchoMaterial`.  
-- Поддерживает кастомное название, описание (lore) и CustomModelData.  
+**EchoMaterialAPI** — Лёгкая и удобная Java-библиотека для создания и регистрации кастомных предметов Minecraft (1.21) с поддержкой JDK 21 и Paper.
+- Позволяет работать с кастомными предметами так же, как с обычными `Material`, используя `EchoMaterial`.
+- Поддерживает кастомное название, описание (lore) и CustomModelData.
+- Минималистичная точка доступа: все предметы доступны через `EchoMaterial.<CONSTANT>`; утилиты — в `ItemUtils`.
 - Централизованный менеджер предметов упрощает их регистрацию и использование в любых плагинах.
 
 Идеально подходит **для интеграции в Minecraft-плагины** на JDK 21+.
@@ -31,7 +32,7 @@ EchoMaterialAPI — Лёгкая и удобная Java-библиотека д�
     <dependency>
         <groupId>com.github.Hacker123ter</groupId>
         <artifactId>EchoMaterialAPI-EchoOmx</artifactId>
-        <version>v1.0.0</version>
+        <version>v1.0.1</version>
     </dependency>
 </dependencies>
 ```
@@ -45,7 +46,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.github.Hacker123ter:EchoMaterialAPI-EchoOmx:v1.0.0'
+    implementation 'com.github.Hacker123ter:EchoMaterialAPI-EchoOmx:v1.0.1'
 }
 ```
 
@@ -57,7 +58,7 @@ dependencies {
 ```java
 import org.dw363.echomaterial.item.EchoMaterial;
 
-ItemStack coinBlock = EchoMaterial.COIN_BLOCK.toItemStack();
+ItemStack stack = EchoMaterial.TEST_TOKEN.toItemStack();
 ```
 
 2. Проверка, является ли предмет кастомным:
@@ -65,22 +66,23 @@ ItemStack coinBlock = EchoMaterial.COIN_BLOCK.toItemStack();
 import org.dw363.echomaterial.item.EchoMaterial;
 import org.dw363.echomaterial.utils.ItemUtils;
 
-boolean isCoinBlock = ItemUtils.isEchoItem(player.getInventory().getItemInMainHand(), EchoMaterial.COIN_BLOCK);
+boolean isTest = ItemUtils.isEchoItem(player.getInventory().getItemInMainHand(), EchoMaterial.TEST_TOKEN);
 ```
 
-3. Регистрация кастомного блока:
+3. Пример регистрации кастомного блока:
 ```java
-register(new CustomBlock("coin_block", Material.STONE, 1001, EchoMaterial.COIN_BLOCK));
+register(new CustomBlock("coin_block", Material.STONE, 1001, EchoMaterial.TEST_TOKEN));
 ```
 
 ---
 
 ## 🔧 Как работает:
 
-- Вся информация о кастомном предмете хранится в `EchoMaterial` — название, описание, базовый материал и CustomModelData.
-- `EchoItemManager` отвечает за регистрацию и хранение всех кастомных предметов.
-- Для получения предмета используется метод `toItemStack()` в `EchoMaterial`.
-- `ItemUtils` позволяет проверять, является ли предмет определённым кастомным предметом.
+- Вся информация о кастомном предмете хранится в экземпляре `EchoMaterial` — уникальный id, displayName, lore, базовый `Material` и `customModelData`.
+- Константы предметов вынесены в отдельный класс/список (например `EchoList`) и экспортируются как `public static final` ссылки через `EchoMaterial` (например `EchoMaterial.TEST_TOKEN`).
+- Метод `EchoMaterial.toItemStack()` формирует `ItemStack` с нужной метаинформацией.
+- `ItemUtils` предоставляет удобные проверки (по CMD и/или имени).
+- Библиотека минимальна и не выполняет побочных действий при загрузке — инициализация происходит JVM при первом обращении к константам. Для явной гарантии инициализации при старте плагина при желании можно вызвать `Class.forName("org.dw363.echomaterial.list.EchoList")` в `onEnable()`.
 
 ---
 
@@ -88,13 +90,16 @@ register(new CustomBlock("coin_block", Material.STONE, 1001, EchoMaterial.COIN_B
 
 - `EchoMaterial.getId()` — получить уникальный ID предмета.
 - `EchoMaterial.toItemStack()` — получить предмет как `ItemStack`.
-- `ItemUtils.isEchoItem(ItemStack, EchoMaterial)` — проверить предмет.
-- `EchoItemManager.register(EchoMaterial)` — зарегистрировать предмет.
+  `EchoMaterial.getCustomModelData()` — получить CMD.
+- `ItemUtils.isEchoItem(ItemStack, EchoMaterial)` — проверить предмет по имени + CMD.
+- `ItemUtils.isEchoItemByCMD(ItemStack, EchoMaterial)` — проверить предмет только по CMD.
+
+Опционально: `EchoMaterialAPI` — лёгкий плагин с `onEnable()` (если ставить библиотеку отдельно на сервер).
 
 ---
 
 ### Добавленные предметы:
 
-- **Test_TOKEN** — `Clay_ball`; `§6Test Token`; `§7Special testing token.`; CMD: `1`
+-  **TEST_TOKEN** — `Clay_ball`; `§6Test Token`; `§7Special testing token.`; CMD: `1`
 
 ---
