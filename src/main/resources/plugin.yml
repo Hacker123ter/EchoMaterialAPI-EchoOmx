@@ -1,0 +1,8 @@
+name: EchoMaterialAPI
+version: '1.0.0'
+main: org.dw363.echomaterial.EchoMaterialAPI
+api-version: '1.21'
+load: STARTUP
+authors: [dw363]
+description: Библиотека EchoOmx для регистрации и использования кастомных предметов Minecraft как стандартных Material через класс EchoMaterial
+website: https://github.com/Hacker123ter
