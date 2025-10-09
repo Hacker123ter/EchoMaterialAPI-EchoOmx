@@ -16,6 +16,11 @@ public class EchoMaterial {
     private final int customModelData;
 
     public static final EchoMaterial TEST_TOKEN = EchoList.TEST_TOKEN;
+    public static final EchoMaterial SHIBA_INU = EchoList.SHIBA_INU;
+    public static final EchoMaterial BABY_DOGE = EchoList.BABY_DOGE;
+    public static final EchoMaterial DOGE = EchoList.DOGE;
+    public static final EchoMaterial FLOKI_INU = EchoList.FLOKI_INU;
+    public static final EchoMaterial PEPE = EchoList.PEPE;
 
     public EchoMaterial(String id, Material baseMaterial, String displayName, List<String> lore, int customModelData) {
         this.id = id;

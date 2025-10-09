@@ -6,7 +6,7 @@
 
     <groupId>org.dw363</groupId>
     <artifactId>EchoMaterialAPI</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
     <packaging>jar</packaging>
 
     <name>EchoMaterialAPI</name>
