@@ -1,4 +1,4 @@
-![Version](https://img.shields.io/badge/release-1.0.1-green.svg)  
+![Version](https://img.shields.io/badge/release-1.0.2-green.svg)  
 ![JDK](https://img.shields.io/badge/JDK-21.0.8-blue.svg)
 ![API](https://img.shields.io/badge/Paper-1.21-blue.svg)
 
@@ -100,6 +100,11 @@ register(new CustomBlock("coin_block", Material.STONE, 1001, EchoMaterial.TEST_T
 
 ### Добавленные предметы:
 
--  **TEST_TOKEN** — `Clay_ball`; `§6Test Token`; `§7Special testing token.`; CMD: `1`
+-  **TEST_TOKEN** — `Clay_ball`; `Test Token`; `Special testing token.`; CMD: `1`
+-  **SHIBA_INU** — `Clay_ball`; `Shiba Inu [ERC-20]`; `Мем-валюта с самурайским духом.; Основана на Ethereum.`; CMD: `1`
+-  **BABY_DOGE** — `Clay_ball`; `Baby Doge [BEP-20]`; `Дитя великого Doge.; Основана на Binance Smart Chain.`; CMD: `2`
+-  **DOGE** — `Clay_ball`; `DOGE [DOGE]`; `To the Moon!; Мем, ставший реальностью.`; CMD: `3`
+-  **FLOKI_INU** — `Clay_ball`; `Floki inu [ERC-20]`; `Викинг среди мем-коинов.; Основана на Ethereum.`; CMD: `4`
+-  **PEPE** — `Clay_ball`; `PEPE [BEP-20]`; `Легендарная лягушка Пепе.; Основана на Binance Smart Chain.`; CMD: `5`
 
 ---
